@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Quem Deixou Isso Aqui De Novo</title>
+    <title>Unity Web Player | Quem Deixou Isso Aqui De Novo</title>
   </head>
-  <body style="text-align: center">
-    <canvas id="unity-canvas" width=1080 height=720 style="width: 1080px; height: 720px; background: #231F20"></canvas>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=1080 height=720 tabindex="-1" style="width: 1080px; height: 720px; background: #231F20"></canvas>
     <script src="Build/QuemDeixouIssoAqui2.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -15,9 +15,17 @@
         meta.name = 'viewport';
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
+
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
+
+        document.body.style.textAlign = "left";
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
+        arguments: [],
         dataUrl: "Build/QuemDeixouIssoAqui2.data",
         frameworkUrl: "Build/QuemDeixouIssoAqui2.framework.js",
         codeUrl: "Build/QuemDeixouIssoAqui2.wasm",
